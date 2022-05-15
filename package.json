@@ -1,19 +1,42 @@
 {
-  "name": "roverproject",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cha1350/roverproject.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cha1350/roverproject/issues"
-  },
-  "homepage": "https://github.com/cha1350/roverproject#readme"
+    "name": "roverproject",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint": "eslint --debug src/",
+        "lint:fix": "eslint --debug src/ --fix .",
+        "test": "jest",
+        "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cha1350/roverproject.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cha1350/roverproject/issues"
+    },
+    "homepage": "https://github.com/cha1350/roverproject#readme",
+    "dependencies": {
+        "fs": "^0.0.1-security"
+    },
+    "devDependencies": {
+        "eslint": "^8.15.0",
+        "eslint-config-prettier": "^8.5.0",
+        "husky": "^8.0.1",
+        "jest": "^28.1.0",
+        "prettier": "^2.6.2"
+    },
+    "type": "module",
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint",
+            "pre-push": "npm run test"
+        }
+    }
 }
