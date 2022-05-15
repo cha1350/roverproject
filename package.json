@@ -10,6 +10,7 @@
         "lint:fix": "eslint --debug src/ --fix .",
         "test": "jest",
         "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+        "prepare": "husky install",
         "start": "node index.js"
     },
     "repository": {
