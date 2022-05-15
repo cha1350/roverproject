@@ -1,0 +1,19 @@
+{
+  "name": "roverproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cha1350/roverproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cha1350/roverproject/issues"
+  },
+  "homepage": "https://github.com/cha1350/roverproject#readme"
+}
