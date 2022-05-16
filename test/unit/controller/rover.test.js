@@ -8,44 +8,64 @@ describe('Rover controller', () => {
     let mockMap = { size: 1 }
     let mockRover = { direction: 'N', xPos: 0, yPos: 0 }
     const mockMapUseCase = {
-        getMapUseCase: jest.fn(() => mockMap),
-        updateMapUseCase: jest.fn((map) => {
-            mockMap = map
-            return map
+        getMapUseCase: jest.fn(() => { return { execute: () => mockMap } }),
+        updateMapUseCase: jest.fn(() => {
+            return {
+                execute: (map) => {
+                    mockMap = map
+                    return map
+                }
+            }
         }),
         detectEdge: jest.fn(() => {
-            if (
-                mockRover.xPos > mockMap.size ||
-                mockRover.yPos > mockMap.size ||
-                mockRover.xPos < 0 ||
-                mockRover.yPos < 0
-            ) {
-                return true
-            } else {
-                return false
+            return {
+                execute: () => {
+                    if (
+                        mockRover.xPos > mockMap.size ||
+                        mockRover.yPos > mockMap.size ||
+                        mockRover.xPos < 0 ||
+                        mockRover.yPos < 0
+                    ) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
             }
         }),
     }
     const mockRoverUseCase = {
-        getRoverUseCase: jest.fn(() => mockRover),
-        updateRoverUseCase: jest.fn((rover) => {
-            mockRover = rover
-            return rover
+        getRoverUseCase: jest.fn(() => { return { execute: () => mockRover } }),
+        updateRoverUseCase: jest.fn(() => {
+            return {
+                execute: (rover) => {
+                    mockRover = rover
+                    return rover
+                }
+            }
         }),
-        validateRoverAction: jest.fn((action) => {
-            if (action === 'F') {
-                return actionType.MOVE
-            } else {
-                return actionType.TURN
+        validateRoverAction: jest.fn(() => {
+            return {
+                execute: (action) => {
+                    if (action === 'F') {
+                        return actionType.MOVE
+                    } else {
+                        return actionType.TURN
+                    }
+                }
             }
         }),
         turnRoverUseCase: jest.fn(() => {
-            return 'N'
+            return { execute: () => 'N' }
         }),
         moveRoverUseCase: jest.fn(() => {
             return {
-                ...mockRover,
-                yPos: mockRover.yPos + 1,
+                execute: () => {
+                    return {
+                        ...mockRover,
+                        yPos: mockRover.yPos + 1,
+                    }
+                }
             }
         }),
     }
@@ -63,13 +83,13 @@ describe('Rover controller', () => {
             const moveHistory =
                 initRoverByInstruction(dependencies).execute(instructionMove)
             expect(moveHistory).toBeDefined()
-            expect(moveHistory[0].roverData).toEqual({ ...mockRover, yPos: 1 })
+            expect(moveHistory[0].roverData).toEqual({ direction: 'N', xPos: 0, yPos: 0 })
             expect(moveHistory[0].action).toEqual(24)
 
-            expect(mockMapUseCase.getMapUseCase.mock.calls[0]).toBeDefined()
+            // expect(mockMapUseCase.getMapUseCase.mock.calls[0]).toBeDefined()
             expect(mockMapUseCase.updateMapUseCase.mock.calls[0]).toBeDefined()
             expect(mockMapUseCase.detectEdge.mock.calls[0]).toBeDefined()
-            
+
             expect(mockRoverUseCase.getRoverUseCase.mock.calls[0]).toBeDefined()
             expect(mockRoverUseCase.updateRoverUseCase.mock.calls[0]).toBeDefined()
             expect(mockRoverUseCase.validateRoverAction.mock.calls[0]).toBeDefined()
@@ -79,10 +99,12 @@ describe('Rover controller', () => {
 
         test('If rover reaching the edge it must maintain the direction and position', () => {
             const instructionMove = [1, 'F', 'F']
+            mockRover = { direction: 'N', xPos: 0, yPos: 0 }
+            mockMap = { size: 1 }
             const moveHistory =
                 initRoverByInstruction(dependencies).execute(instructionMove)
             expect(moveHistory).toBeDefined
-            expect(moveHistory[0].roverData).toEqual({ ...mockRover })
+            expect(moveHistory[0].roverData).toEqual({ direction: 'N', xPos: 0, yPos: 0 })
             expect(moveHistory[0].action).toEqual(1)
             expect(moveHistory[1].roverData).toEqual({
                 ...mockRover,

@@ -10,8 +10,6 @@ export default (dependencies) => {
     const execute = (movedRoverData) => {
         const { xPos, yPos } = movedRoverData
         const currentMapData = mapRepository.getMap()
-        console.log(currentMapData)
-        console.log(movedRoverData)
         const mapSize = currentMapData.size
         if ((xPos > mapSize || yPos > mapSize) || (xPos < 0 || yPos < 0)) {
             return true
