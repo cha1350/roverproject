@@ -1,3 +1,5 @@
-export const main = () => {
-    console.log("Hello world!")
+export const main = {
+    start: async () => {
+        console.log("Hello world!")
+    }
 }

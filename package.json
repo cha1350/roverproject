@@ -8,7 +8,7 @@
         "format:write": "prettier --write .",
         "lint": "eslint --debug src/",
         "lint:fix": "eslint --debug src/ --fix .",
-        "test": "jest",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
         "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
         "prepare": "husky install",
         "start": "node index.js"
