@@ -1,4 +1,4 @@
-import { actionType, MarsMap, Rover } from "../../entity"
+import { actionType, MarsMap, Rover } from "../../entity/index.js"
 
 export default (dependencies) => {
     const {
@@ -19,7 +19,8 @@ export default (dependencies) => {
         const mapData = new MarsMap({ size: mapSize })
         const updatedMap = mapUseCase.updateMapUseCase(dependencies).execute(mapData)
         const initRoverPosition = new Rover({ direction: 'N', xPos: 0, yPos: 0 })
-        let moveHistory = [{ action: updatedMap.size, roverData: initRoverPosition }]
+        const updatedRoverData = roverUseCase.updateRoverUseCase(dependencies).execute(initRoverPosition)
+        let moveHistory = [{ action: updatedMap.size, roverData: updatedRoverData }]
         for (const action of actions) {
             const roverAction = roverUseCase.validateRoverAction(dependencies).execute(action)
             switch (roverAction) {

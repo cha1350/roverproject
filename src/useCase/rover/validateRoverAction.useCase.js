@@ -1,5 +1,5 @@
-import { actionType } from "../../entity"
-import { ResponseError, ValidationError } from "../../framework/common/response"
+import { actionType } from "../../entity/index.js"
+import { ResponseError, ValidationError } from "../../framework/common/response.js"
 
 export default (dependencies) => {
     const {

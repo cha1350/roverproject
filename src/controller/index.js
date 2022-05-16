@@ -1,5 +1,5 @@
 import roverController from './rover/index.js'
 
-export {
+export default {
     roverController,
 }
