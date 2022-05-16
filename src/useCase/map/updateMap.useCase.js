@@ -7,8 +7,8 @@ export default (dependencies) => {
         throw new Error('mapRepository should be in depencies')
     }
 
-    const execute = () => {
-        return
+    const execute = (mapData) => {
+        return mapRepository.updateMap(mapData)
     }
 
     return { execute }

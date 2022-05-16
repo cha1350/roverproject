@@ -17,13 +17,8 @@ describe('Map use cases', () => {
         getMap: jest.fn(() => mock)
     }
 
-    const mockRoverRepo = {
-        getRover: jest.fn(() => { return { direction: 'N', xPos: 4, yPos: 4 } })
-    }
-
     const dependencies = {
         mapRepository: mockMapRepo,
-        roverRepository: mockRoverRepo
     }
 
     describe('Update new map size', () => {
@@ -53,25 +48,37 @@ describe('Map use cases', () => {
 
     describe('Detect edge of map by map size', () => {
         test('Should returned true when rover is on the edge of map size', () => {
-            const isEdge = detectEdge(dependencies).execute()
+            mock = {
+                size: 4
+            }
+            const movedRoverData = {
+                direction: "N",
+                xPos: 5,
+                yPos: 4
+            }
+            const isEdge = detectEdge(dependencies).execute(movedRoverData)
             expect(isEdge).toBeDefined()
             expect(isEdge).toEqual(true)
 
             const mapCall = mockMapRepo.getMap.mock.calls[0]
             expect(mapCall).toBeDefined()
-            const roverCall = mockRoverRepo.getRover.mock.calls[0]
-            expect(roverCall).toBeDefined()
         })
 
         test('Should returned false when rover isn\'t on the edge of map size', () => {
-            const isEdge = detectEdge(dependencies).execute()
+            mock = {
+                size: 4
+            }
+            const movedRoverData = {
+                direction: "N",
+                xPos: 1,
+                yPos: 1
+            }
+            const isEdge = detectEdge(dependencies).execute(movedRoverData)
             expect(isEdge).toBeDefined()
-            expect(isEdge).toEqual(true)
+            expect(isEdge).toEqual(false)
 
             const mapCall = mockMapRepo.getMap.mock.calls[0]
             expect(mapCall).toBeDefined()
-            const roverCall = mockRoverRepo.getRover.mock.calls[0]
-            expect(roverCall).toBeDefined()
         })
     })
 })
