@@ -1,8 +1,12 @@
+import inMemoryDB from "../../inMemory/index.js"
+
+
 export default {
     getMap: () => {
-        return
+        return inMemoryDB.map
     },
-    updateMap: () => {
-        return
+    updateMap: (map) => {
+        inMemoryDB.map = { ...map }
+        return map
     }
 }
