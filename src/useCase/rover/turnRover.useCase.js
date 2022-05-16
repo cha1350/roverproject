@@ -9,7 +9,6 @@ export default (dependencies) => {
 
     const execute = (action) => {
         const currentRoverData = roverRepository.getRover()
-        console.log(currentRoverData)
         const turnDirectionConfig = {
             L: {
                 N: 'W',
