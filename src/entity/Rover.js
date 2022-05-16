@@ -9,3 +9,8 @@ export const Rover = class Rover {
         this.yPos = yPos
     }
 }
+
+export const actionType = {
+    TURN: "TURN",
+    MOVE: "MOVE"
+}

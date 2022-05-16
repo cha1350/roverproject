@@ -11,5 +11,5 @@ export default (dependencies) => {
         return
     }
 
-    return execute
+    return { execute }
 }

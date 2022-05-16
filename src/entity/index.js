@@ -1,7 +1,8 @@
-import { Map } from "./map.js";
-import { Rover } from "./rover.js";
+import { MarsMap } from "./map.js";
+import { Rover, actionType } from "./rover.js";
 
 export {
-    Map,
-    Rover
+    MarsMap,
+    Rover,
+    actionType
 }

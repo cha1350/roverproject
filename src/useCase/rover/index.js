@@ -4,7 +4,7 @@ import turnRoverUseCase from './turnRover.useCase.js'
 import updateRoverUseCase from './updateRover.useCase.js'
 import validateRoverAction from './validateRoverAction.useCase.js'
 
-export {
+export default {
     getRoverUseCase,
     moveRoverUseCase,
     turnRoverUseCase,
