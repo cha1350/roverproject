@@ -81,8 +81,8 @@ describe('Rover use cases', () => {
             }
             const newPos = moveRoverUseCase(dependencies).execute(action)
             expect(newPos).toBeDefined()
-            expect(newPos.xPos).toEqual(0)
-            expect(newPos.yPos).toEqual(1)
+            expect(newPos.xPos).toEqual(1)
+            expect(newPos.yPos).toEqual(0)
             expect(newPos.direction).toEqual('E')
 
             const call = mockRoverRepo.getRover.mock.calls[0]
@@ -126,7 +126,7 @@ describe('Rover use cases', () => {
         test('New direction should be in N->E->S->W->N format when turn action is \'R\'', () => {
             const action = 'R'
             const directionForTurnRFormat = ['N', 'E', 'S', 'W', 'N']
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 4; i++) {
                 mock = {
                     direction: directionForTurnRFormat[i],
                     xPos: 0,
@@ -141,7 +141,7 @@ describe('Rover use cases', () => {
         test('New direction should be in N->W->S->E->N format when turn action is \'L\'', () => {
             const action = 'L'
             const directionForTurnRFormat = ['N', 'W', 'S', 'E', 'N']
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 4; i++) {
                 mock = {
                     direction: directionForTurnRFormat[i],
                     xPos: 0,
@@ -157,7 +157,6 @@ describe('Rover use cases', () => {
     describe('Validate and classify action type', () => {
         test('Action \'F\' should classified as move action', () => {
             const action = 'F'
-            console.log(actionType)
             const roverAction = validateRoverAction(dependencies).execute(action)
             expect(roverAction).toBeDefined()
             expect(roverAction).toEqual(actionType.MOVE)
@@ -165,7 +164,6 @@ describe('Rover use cases', () => {
 
         test('Action \'L\' and \'R\' should classified as turn action', () => {
             const actions = ['L', 'R']
-            console.log(actionType)
             for (const action of actions) {
                 const roverAction = validateRoverAction(dependencies).execute(action)
                 expect(roverAction).toBeDefined()
@@ -179,7 +177,7 @@ describe('Rover use cases', () => {
                 validateRoverAction(dependencies).execute(action)
                 expect(true).toBe(false)
             } catch (err) {
-                expect(err.validationErrors).toEqual([new ValidationError({field: "action", msg: `This '${action}' action is wrong action type!`})])
+                expect(err.validationErrors).toEqual(new ValidationError({ field: "action", msg: `This '${action}' action is wrong action type!` }))
             }
         })
     })

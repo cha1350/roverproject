@@ -7,8 +7,8 @@ export default (dependencies) => {
         throw new Error('roverRepository should be in depencies')
     }
 
-    const execute = () => {
-        return
+    const execute = (roverData) => {
+        return roverRepository.updateRover(roverData)
     }
 
     return { execute }

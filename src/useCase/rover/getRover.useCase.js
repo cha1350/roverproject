@@ -8,7 +8,7 @@ export default (dependencies) => {
     }
 
     const execute = () => {
-        return
+        return roverRepository.getRover()
     }
 
     return { execute }
