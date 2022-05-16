@@ -1,6 +1,8 @@
+import inMemoryDB from "../../inMemory/index.js"
+
 export default {
     getRover: () => {
-        return
+        return inMemoryDB.rover
     },
     updateRoverPosition: () => {
         return
@@ -8,7 +10,8 @@ export default {
     updateRoverDirection: () => {
         return
     },
-    updateRover: () => {
-        return
+    updateRover: (rover) => {
+        inMemoryDB.rover = { ...rover }
+        return rover
     }
 }

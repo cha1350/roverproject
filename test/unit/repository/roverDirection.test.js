@@ -19,4 +19,3 @@ describe('Rover repository', () => {
         expect(returnedRover).toEqual(updatedRover)
     })
 })
-
