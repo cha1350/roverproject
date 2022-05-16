@@ -25,6 +25,7 @@ export default (dependencies) => {
                                 '  |  ',
                                 `${actionHistory.roverData.direction}:${actionHistory.roverData.xPos},${actionHistory.roverData.yPos}`)
                         }
+                        await execute()
                     } else {
                         console.log("I can't found file name or directory please try again.")
                         await execute()
