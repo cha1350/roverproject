@@ -19,12 +19,12 @@ describe('Rover controller', () => {
         }),
         detectEdge: jest.fn(() => {
             return {
-                execute: () => {
+                execute: (newRoverData) => {
                     if (
-                        mockRover.xPos > mockMap.size ||
-                        mockRover.yPos > mockMap.size ||
-                        mockRover.xPos < 0 ||
-                        mockRover.yPos < 0
+                        newRoverData.xPos > mockMap.size ||
+                        newRoverData.yPos > mockMap.size ||
+                        newRoverData.xPos < 0 ||
+                        newRoverData.yPos < 0
                     ) {
                         return true
                     } else {

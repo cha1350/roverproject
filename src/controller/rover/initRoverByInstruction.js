@@ -21,6 +21,7 @@ export default (dependencies) => {
                 case actionType.MOVE: {
                     const newRoverData = roverUseCase.moveRoverUseCase(dependencies).execute(action)
                     const isEdge = mapUseCase.detectEdge(dependencies).execute(newRoverData)
+                    console.log(isEdge)
                     if (isEdge) {
                         const currentRoverData = roverUseCase.getRoverUseCase(dependencies).execute()
                         moveHistory.push({ action, roverData: currentRoverData })
