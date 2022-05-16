@@ -1,11 +1,11 @@
-import { map } from '../../../src/useCase/index.js'
+import { mapUseCase } from '../../../src/useCase/index.js'
 import { jest } from '@jest/globals'
 
 const {
     detectEdge,
     getMapUseCase,
     updateMapUseCase
-} = map
+} = mapUseCase
 
 describe('Map use cases', () => {
     let mock = { size: 1 }

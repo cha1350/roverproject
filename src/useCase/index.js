@@ -1,7 +1,7 @@
-import rover from './rover/index.js'
-import map from './map/index.js'
+import roverUseCase from './rover/index.js'
+import mapUseCase from './map/index.js'
 
 export {
-    rover,
-    map
+    roverUseCase,
+    mapUseCase
 }

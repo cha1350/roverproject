@@ -1,4 +1,4 @@
-import { rover } from '../../../src/useCase/index.js'
+import { roverUseCase } from '../../../src/useCase/index.js'
 import { actionType } from '../../../src/entity/index.js'
 import { jest } from '@jest/globals'
 import { ValidationError } from '../../../src/framework/common/response.js'
@@ -8,7 +8,7 @@ const {
     turnRoverUseCase,
     updateRoverUseCase,
     validateRoverAction,
-} = rover
+} = roverUseCase
 
 describe('Rover use cases', () => {
     let mock = { direction: 'N', xPos: 0, yPos: 0 }
