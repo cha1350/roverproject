@@ -1,15 +1,7 @@
 import { actionType } from "../../entity/index.js"
 import { ResponseError, ValidationError } from "../../framework/common/response.js"
 
-export default (dependencies) => {
-    const {
-        roverRepository
-    } = dependencies
-
-    if (!roverRepository) {
-        throw new Error('roverRepository should be in depencies')
-    }
-
+export default () => {
     const execute = (action) => {
         const existAction = ['F', 'L', 'R']
         if (existAction.includes(action)) {

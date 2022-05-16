@@ -3,9 +3,7 @@ export default (dependencies) => {
         roverRepository
     } = dependencies
 
-    if (!roverRepository) {
-        throw new Error('roverRepository should be in depencies')
-    }
+    
 
     const execute = (action) => {
         const currentRoverData = roverRepository.getRover()

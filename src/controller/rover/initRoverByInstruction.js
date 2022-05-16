@@ -6,12 +6,6 @@ export default (dependencies) => {
         mapUseCase
     } = dependencies
 
-    if (!roverUseCase) {
-        throw new Error('roverController should be in depencies')
-    }
-    if (!mapUseCase) {
-        throw new Error('mapUseCase should be in depencies')
-    }
     const execute = (moveInstruction) => {
 
         const mapSize = moveInstruction[0]
@@ -44,8 +38,6 @@ export default (dependencies) => {
                     moveHistory.push({ action, roverData: updatedRoverData })
                     break
                 }
-                default:
-                    break
             }
         }
 

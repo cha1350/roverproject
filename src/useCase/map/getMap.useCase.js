@@ -3,10 +3,6 @@ export default (dependencies) => {
         mapRepository
     } = dependencies
 
-    if (!mapRepository) {
-        throw new Error('mapRepository should be in depencies')
-    }
-
     const execute = () => {
         return mapRepository.getMap()
     }

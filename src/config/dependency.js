@@ -1,6 +1,6 @@
-import repositories from '../framework/repository/inMemory/index.js'
-import useCases from '../useCase/index.js'
-import controllers from '../controller/index.js'
+import * as repositories from '../framework/repository/inMemory/index.js'
+import * as useCases from '../useCase/index.js'
+import * as controllers from '../controller/index.js'
 export default {
     ...repositories,
     ...useCases,

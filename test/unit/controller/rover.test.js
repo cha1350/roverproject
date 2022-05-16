@@ -78,7 +78,7 @@ describe('Rover controller', () => {
         // const instructionMove = [24, 'F', 'R', 'F', 'L', 'F', 'R', 'F', 'L', 'F', 'F', 'F', 'F']
         test('Rover moving history should be defined and return as array of object', () => {
             const instructionMove = [
-                24, 'F', 'R', 'F', 'L', 'F', 'R', 'F', 'L', 'F', 'F', 'F', 'F',
+                24, 'F', 'R', 'F', 'L', 'F', 'R', 'F', 'L', 'F', 'F', 'F', 'F', 'L'
             ]
             const moveHistory =
                 initRoverByInstruction(dependencies).execute(instructionMove)

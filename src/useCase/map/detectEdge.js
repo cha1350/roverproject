@@ -3,9 +3,7 @@ export default (dependencies) => {
         mapRepository,
     } = dependencies
 
-    if (!mapRepository) {
-        throw new Error('mapRepository should be in depencies')
-    }
+    
 
     const execute = (movedRoverData) => {
         const { xPos, yPos } = movedRoverData
