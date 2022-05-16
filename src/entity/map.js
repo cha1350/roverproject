@@ -1,4 +1,4 @@
-export const Map = class Map {
+export const MarsMap = class MarsMap {
     constructor({
         size = 1
     } = {}) {
