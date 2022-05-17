@@ -17,6 +17,17 @@ Install the latest [Node.js LTS](https://nodejs.org/en/) then
     npm run dev
 ```
 
+### File format
+
+First line will always be a size of a maps represent in integer only. After that will be an instruction to move or rotate.
+
+### Some rules
+
+1. Rover always starts in position 0,0 with facing north.
+2. F for moving forward 1 block. L for turning left. R for turing right.
+3. After the turning it should stay on the same block. Just direction is move.
+4. If rover reaching the edge it must maintain the direction and position.
+
 Put instruction .txt file in `/storage`
 In `/storage` folder already have demo file for testing
 
@@ -29,6 +40,16 @@ then fill in your file name in cli.
     You have a mission to discover mars with rover! 🚀 🚀 🚀
     Please put your move instruction in /storage path.
     Fill in your file name: ${Your_file_name}
+
+    # Your output will look like this
+    demo2.txt
+    6   |   N:0,0
+    F   |   N:0,1
+    R   |   E:0,1
+    F   |   E:1,1
+    L   |   N:1,1
+    F   |   N:1,2
+    R   |   E:1,2
 ```
 
 ## Testing
